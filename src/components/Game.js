@@ -23,9 +23,41 @@ class Game extends Component {
         this.handlePlace = this.handlePlace.bind(this);
     }
 
+    checkWin() {
+        const LINES = [[[0, 0], [0, 1], [0, 2], [0, 3]],
+                       [[1, 0], [1, 1], [1, 2], [1, 3]],
+                       [[2, 0], [2, 1], [2, 2], [2, 3]],
+                       [[3, 0], [3, 1], [3, 2], [3, 3]],
+                       [[0, 0], [1, 0], [2, 0], [3, 0]],
+                       [[0, 1], [1, 1], [2, 1], [3, 1]],
+                       [[0, 2], [1, 2], [2, 2], [3, 2]],
+                       [[0, 3], [1, 3], [2, 3], [3, 3]],
+                       [[0, 0], [1, 1], [2, 2], [3, 3]],
+                       [[3, 0], [2, 1], [1, 2], [0, 3]]];
+        for (let i = 0; i < LINES.length; i++) {
+            const boardPieces = this.getPieces(LINES[i]);
+            if (!boardPieces.includes(null)) {
+                if ((boardPieces[0] & boardPieces[1] & boardPieces[1] & boardPieces[2]) !== 0 ||
+                    ((boardPieces[0]^15) & (boardPieces[1]^15) & (boardPieces[2]^15) & (boardPieces[3]^15)) !== 0) {
+                        return true;
+                    }
+            }
+        }
+        return false;
+    }
+
+    getPieces(squares) {
+        let r = [];
+        for (let i = 0; i < squares.length; i++) {
+            r.push(this.state.board[squares[i][0]][squares[i][1]]);
+        }
+        return r;
+    }
+
     nextPhase() {
         if (this.state.playing && !this.state.showSelected) {
             // check for win here?
+            console.log(this.checkWin())
             this.setState({playing: false});
         } else if (!this.state.playing && this.state.selected !== null) {
             this.setState(prevState => ({
