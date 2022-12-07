@@ -7,7 +7,7 @@ class Gameboard extends Component {
             <div>
                 {this.props.board.map((row, r) => {
                     return (
-                        <div key={r.toString()}>
+                        <div key={r.toString()} className="flex flex-row">
                             {row.map((col, c) => {
                                 return <BoardSquare 
                                             key={c.toString()} row={r} col={c} 

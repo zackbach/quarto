@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Piece from './Piece';
 
 class BoardSquare extends Component {
     constructor(props) {
@@ -11,7 +12,11 @@ class BoardSquare extends Component {
     }
     
     render() {
-        return <button onClick={this.handleClick}>{this.props.pieceID}</button>
+        return (
+        <div className="aspect-square w-16 border-4 border-black" onClick={this.handleClick}>
+            {this.props.pieceID !== null && <Piece pieceID={this.props.pieceID} handleClick={() => {}}/>}
+        </div>
+        );
     }
 }
 

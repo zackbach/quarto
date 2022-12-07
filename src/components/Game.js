@@ -3,6 +3,7 @@ import PhaseIndicator from './PhaseIndicator';
 import Gameboard from './Gameboard';
 import RemainingPieces from './RemainingPieces';
 import Piece from './Piece';
+import { toHaveStyle } from '@testing-library/jest-dom/dist/matchers';
 
 class Game extends Component {
     constructor(props) {
@@ -16,11 +17,13 @@ class Game extends Component {
             showSelected: true,
             playerOne: true,
             playing: false,
+            hasWon: false,
         }
         this.nextPhase = this.nextPhase.bind(this);
         this.handleSelect = this.handleSelect.bind(this);
         this.clickSelected = this.clickSelected.bind(this);
         this.handlePlace = this.handlePlace.bind(this);
+        this.newGame = this.newGame.bind(this);
     }
 
     checkWin() {
@@ -56,9 +59,7 @@ class Game extends Component {
 
     nextPhase() {
         if (this.state.playing && !this.state.showSelected) {
-            // check for win here?
-            console.log(this.checkWin())
-            this.setState({playing: false});
+            this.setState({hasWon: this.checkWin(), playing: false});
         } else if (!this.state.playing && this.state.selected !== null) {
             this.setState(prevState => ({
                 playerOne: !prevState.playerOne,
@@ -141,18 +142,37 @@ class Game extends Component {
         this.setState({board: newBoard, showSelected: false})
     }
 
+    newGame() {
+        this.setState({
+            board: [[null, null, null, null], 
+                    [null, null, null, null], 
+                    [null, null, null, null], 
+                    [null, null, null, null]],
+            selected: null,
+            showSelected: true,
+            playerOne: true,
+            playing: false,
+            hasWon: false,
+        });
+    }
+
     render() {
+        if (this.state.hasWon) {
+            return (
+                <div>
+                    <h1>{this.state.playerOne ? "Player One Wins!" : "Player Two Wins!"}</h1>
+                    <button onClick={this.newGame}>Play again?</button>
+                </div>
+            );
+        }
         return (
             <div>
                 <PhaseIndicator playerOne={this.state.playerOne} playing={this.state.playing}/>
                 <button onClick={this.nextPhase}>Submit</button>
-                {/*<div onClick={this.clickSelected}>
+                <div className="aspect-square w-16 border-4 border-black" onClick={this.clickSelected}>
                     {this.state.selected !== null && this.state.showSelected &&
                     <Piece onSelect={() => {}} pieceID={this.state.selected}/>}
-                </div>*/}
-                <button onClick={this.clickSelected}>
-                    {(this.state.selected !== null && this.state.showSelected ) ? this.state.selected : ""}
-                </button>
+                </div>
                 <Gameboard board={this.state.board} onPlace={this.handlePlace}/>
                 <RemainingPieces pieces={this.getRemaining()} onSelect={this.handleSelect}/>
             </div>

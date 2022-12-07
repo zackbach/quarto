@@ -12,7 +12,7 @@ class Piece extends Component {
     
     render() {
         return (
-            <img 
+            <img className="w-28"
                 src={require('../assets/' + this.props.pieceID + '.png')} 
                 alt={"A game piece with ID" + this.props.pieceID}
                 width="180"
