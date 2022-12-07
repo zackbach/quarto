@@ -17,6 +17,7 @@ class Game extends Component {
             playing: false,
         }
         this.nextPhase = this.nextPhase.bind(this);
+        this.handleSelect = this.handleSelect.bind(this);
     }
 
     nextPhase() {
@@ -38,6 +39,9 @@ class Game extends Component {
                 seen.add(this.state.board[i][j]);
             }
         }
+        if (this.state.selected !== null) {
+            seen.add(this.state.selected)
+        }
         let r = [];
         for (let n = 0; n < 16; n++) {
             if (!seen.has(n)) {
@@ -47,13 +51,17 @@ class Game extends Component {
         return r;
     }
     
+    handleSelect(id) {
+        this.setState({selected: id})
+    }
+
     render() {
         return (
             <div>
                 <PhaseIndicator playerOne={this.state.playerOne} playing={this.state.playing}/>
                 <button onClick={this.nextPhase}>Submit</button>
                 <Gameboard board={this.state.board} />
-                <RemainingPieces pieces={this.getRemaining()} />
+                <RemainingPieces pieces={this.getRemaining()} onSelect={this.handleSelect}/>
             </div>
         );
     }
