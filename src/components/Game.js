@@ -3,7 +3,6 @@ import PhaseIndicator from './PhaseIndicator';
 import Gameboard from './Gameboard';
 import RemainingPieces from './RemainingPieces';
 import Piece from './Piece';
-import { toHaveStyle } from '@testing-library/jest-dom/dist/matchers';
 
 class Game extends Component {
     constructor(props) {
@@ -88,7 +87,9 @@ class Game extends Component {
     }
     
     handleSelect(id) {
-        this.setState({selected: id, showSelected: true})
+        if (!this.state.playing) {
+            this.setState({selected: id, showSelected: true});
+        }
     }
 
     removeSelected() {
