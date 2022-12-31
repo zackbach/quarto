@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Piece from './Piece';
 
 class RemainingPieces extends Component {
-    
     render() {
         const pieces = this.props.pieces
         return (

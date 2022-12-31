@@ -167,15 +167,17 @@ class Game extends Component {
             );
         }
         return (
-            <div>
-                <PhaseIndicator playerOne={this.state.playerOne} playing={this.state.playing}/>
-                <button onClick={this.nextPhase}>Submit</button>
-                <div className="aspect-square w-16 border-4 border-black" onClick={this.clickSelected}>
-                    {this.state.selected !== null && this.state.showSelected &&
-                    <Piece onSelect={() => {}} pieceID={this.state.selected}/>}
+            <div className="flex justify-center">
+                <div className="w-full md:w-2/3 flex flex-col justify-center mt-8">
+                    <PhaseIndicator playerOne={this.state.playerOne} playing={this.state.playing}/>
+                    <button onClick={this.nextPhase}>Submit</button>
+                    <div className="aspect-square w-16 border-4 border-black" onClick={this.clickSelected}>
+                        {this.state.selected !== null && this.state.showSelected &&
+                        <Piece onSelect={() => {}} pieceID={this.state.selected}/>}
+                    </div>
+                    <Gameboard board={this.state.board} onPlace={this.handlePlace}/>
+                    <RemainingPieces pieces={this.getRemaining()} onSelect={this.handleSelect}/>
                 </div>
-                <Gameboard board={this.state.board} onPlace={this.handlePlace}/>
-                <RemainingPieces pieces={this.getRemaining()} onSelect={this.handleSelect}/>
             </div>
         );
     }
