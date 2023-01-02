@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/zackbach.github.io/quarto/static/css/main.1db2c29a.css",
+    "main.js": "/zackbach.github.io/quarto/static/js/main.346077b3.js",
+    "static/media/1.png": "/zackbach.github.io/quarto/static/media/1.557d0a8b8ae7e2320801.png",
+    "static/media/9.png": "/zackbach.github.io/quarto/static/media/9.3ff2fcacd05c5139bd4f.png",
+    "static/media/0.png": "/zackbach.github.io/quarto/static/media/0.255830580d35740367b0.png",
+    "static/media/3.png": "/zackbach.github.io/quarto/static/media/3.de6f765455537a50e91a.png",
+    "static/media/8.png": "/zackbach.github.io/quarto/static/media/8.21a0be0f661d2fffc323.png",
+    "static/media/4.png": "/zackbach.github.io/quarto/static/media/4.73ca36881731f411d122.png",
+    "static/media/2.png": "/zackbach.github.io/quarto/static/media/2.4a322e8f30f06411caa3.png",
+    "static/media/5.png": "/zackbach.github.io/quarto/static/media/5.37a5287cc9cb222a86ea.png",
+    "static/media/11.png": "/zackbach.github.io/quarto/static/media/11.561abd7263e9359ce081.png",
+    "static/media/12.png": "/zackbach.github.io/quarto/static/media/12.9078c30ef32d2ed5cb3a.png",
+    "static/media/13.png": "/zackbach.github.io/quarto/static/media/13.3343497ffd6537a8df17.png",
+    "static/media/10.png": "/zackbach.github.io/quarto/static/media/10.8e8c9b28087b78ea21e6.png",
+    "static/media/6.png": "/zackbach.github.io/quarto/static/media/6.8280c896f6664eec7404.png",
+    "static/media/14.png": "/zackbach.github.io/quarto/static/media/14.f66a191daf2cb62e346f.png",
+    "static/media/7.png": "/zackbach.github.io/quarto/static/media/7.5a8f5e8db9988aced881.png",
+    "static/media/15.png": "/zackbach.github.io/quarto/static/media/15.a9f8998fe244952b5c06.png",
+    "index.html": "/zackbach.github.io/quarto/index.html",
+    "main.1db2c29a.css.map": "/zackbach.github.io/quarto/static/css/main.1db2c29a.css.map",
+    "main.346077b3.js.map": "/zackbach.github.io/quarto/static/js/main.346077b3.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1db2c29a.css",
+    "static/js/main.346077b3.js"
+  ]
+}
