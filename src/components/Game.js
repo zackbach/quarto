@@ -166,6 +166,18 @@ class Game extends Component {
                 </div>
             );
         }
+
+        const remaining = this.getRemaining()
+
+        if (remaining.length === 0) {
+            return (
+                <div>
+                    <h1>It's a tie!</h1>
+                    <button onClick={this.newGame}>Play again?</button>
+                </div>
+            );
+        }
+
         return (
             <div className="flex justify-center">
                 <div className="w-full md:w-2/3 flex flex-col justify-center mt-8">
@@ -176,7 +188,7 @@ class Game extends Component {
                         <Piece onSelect={() => {}} pieceID={this.state.selected}/>}
                     </div>
                     <Gameboard board={this.state.board} onPlace={this.handlePlace}/>
-                    <RemainingPieces pieces={this.getRemaining()} onSelect={this.handleSelect}/>
+                    <RemainingPieces pieces={remaining} onSelect={this.handleSelect}/>
                 </div>
             </div>
         );
